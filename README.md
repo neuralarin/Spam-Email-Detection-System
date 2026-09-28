@@ -87,19 +87,17 @@ As spam detection involves a trade-off between **precision and recall**, the mod
 
 ## Precision-Based Optimization
 
-The first hyperparameter tuning process was done using **precision** to minimize false-positive spam classifications, where legit emails are incorrectly marked as spam.
+* The first hyperparameter tuning process was done using **precision** to minimize false-positive (where valid emails are incorrectly marked as spam)
 
-### Selected Model: Support Vector Machine (SVM)
+| Model                   |   Accuracy |   Precision |     Recall |   F1 Score |
+| ----------------------- | ---------: | ----------: | ---------: | ---------: |
+| **SVM**                 | **97.49%** |  **96.67%** | **84.06%** | **89.92%** |
+| **Logistic Regression** | **96.81%** |  **96.46%** | **78.99%** | **86.85%** |
+| **Naive Bayes**         | **95.94%** | **100.00%** | **69.57%** | **82.05%** |
+| **KNN**                 | **90.81%** | **100.00%** | **31.16%** | **47.51%** |
+| **Random Forest**       | **88.78%** | **100.00%** | **15.94%** | **27.50%** |
 
-SVM provided a strong balance between precision and recall during precision-based optimization.
-
-| Actual / Predicted | Predicted Ham | Predicted Spam |
-| ------------------ | ------------: | -------------: |
-| **Actual Ham**     |       **892** |          **4** |
-| **Actual Spam**    |        **22** |        **116** |
-
-### Key Observation
-
+### ⚠️ Limitation of Precision-Based Optimization
 * Random Forest and KNN achieved **100% precision**, but their recall dropped significantly.
 * Optimizing only for precision made some models too conservative and caused them to miss more spam emails.
 * Therefore, precision alone was not sufficient for final model selection.
@@ -108,7 +106,16 @@ SVM provided a strong balance between precision and recall during precision-base
 
 # F1-Score-Based Optimization
 
-To achieve a better balance between **precision and recall**, The next hyperparameter tuning was performed using the **F1-score**.
+* To achieve a better balance between **precision and recall**, The next hyperparameter tuning was performed using the **F1-score**.
+
+| Model                   |   Accuracy |  Precision |     Recall |   F1 Score |
+| ----------------------- | ---------: | ---------: | ---------: | ---------: |
+| **Random Forest**       | **98.07%** | **94.70%** | **90.58%** | **92.59%** |
+| **SVM**                 | **97.87%** | **95.31%** | **88.41%** | **91.73%** |
+| **Logistic Regression** | **97.87%** | **95.31%** | **88.41%** | **91.73%** |
+| **Naive Bayes**         | **97.39%** | **91.11%** | **89.13%** | **90.11%** |
+| **KNN**                 | **96.03%** | **98.99%** | **71.01%** | **82.70%** |
+
 
 ### 🏆 Final Model: Random Forest
 
