@@ -99,7 +99,7 @@ As spam detection involves a trade-off between **precision and recall**, the mod
 
 ### ⚠️ Limitation of Precision-Based Optimization
 * Random Forest and KNN achieved **100% precision**, but their recall dropped significantly.
-* Optimizing only for precision made some models too conservative and caused them to miss more spam emails.
+* Optimizing only for precision made some models to have significantly lower recall and caused them to miss more spam emails.
 * Therefore, precision alone was not sufficient for final model selection.
 
 ---
